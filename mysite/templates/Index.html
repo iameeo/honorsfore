@@ -4,7 +4,54 @@
 		<title>아너스 포레 아파트 포토북</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+	<style>
+		*{padding:0px;margin:0px;}
+		ul,li{list-style:none;}
+		.gallery > ul {overflow:hidden;}
+		.gallery > ul > li {float:left;width:40%;margin:5%;border:0px solid red;}
+		.gallery > ul > li > img {width:100%;height:100%;}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script>
+		$(function(){
+			$(".gallery > ul > li").height($(".gallery > ul > li").width());
+
+			$(window).on("resize", function(){
+				$(".gallery > ul > li").height($(".gallery > ul > li").width());
+			});
+		});
+	</script>
     <body>
-         
+         <div class="wrap">
+			<div class="menu"></div>
+			<div class="gallery">
+				<ul>
+					<li><img src="https://image.hogangnono.com/image/nowatermark/original/review/20230221113341_XFfGrAFzWSyECcDZkg?s=720x180&t=outside&q=100" /></li>
+					<li><img src="https://source.unsplash.com/random/?아파트?2" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?3" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?4" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?5" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?6" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?7" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?8" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?9" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?a" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?s" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?d" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?f" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?g" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?q" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?w" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?e" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?r" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?t" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?y" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?u" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?i" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?o" /></li>
+					<li><img src="https://source.unsplash.com/random/300×300?p" /></li>
+				</ul>
+			</div>
+		 </div>
     </body>
 </html>
