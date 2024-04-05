@@ -50,18 +50,3 @@ select {padding:0;margin:0;vertical-align:middle; outline:0;font-family:dotum, A
 iframe{border:0;}
 
 .wrap{}
-
-.menu_wrap{border-bottom: 1px solid #ccc;
-	background-color: #485969;}
-
-.menu_wrap > .menu {overflow: hidden;width:581px;margin:0 auto;}
-.menu_wrap > .menu > li {float:left;padding:20px;}
-.menu_wrap > .menu > li > a {font-size:18px;color:#fff;}
-.menu_wrap > .menu > li > .depth2-list{display: none;}
-
-.footer{text-align: center;background-color: #fff;color:#a0a0a0;padding:50px 0px;}
-.footer > .sns_wrap > .sns {overflow:hidden;width:300px;margin:0 auto;}
-.footer > .sns_wrap > .sns > li {float:left;width:100px;}
-.footer a {color:#5d5d5d;}
-.footer a.active {color:#000;font-weight:bold;}
-.footer > .copyright {color:#000;text-decoration: underline;}

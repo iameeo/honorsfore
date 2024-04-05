@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-		<title>위례 아너스 포레</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'layout.html' %}
 
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}"/>
-		
-		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-		<script src="{{url_for('static', filename='js/script.js')}}"></script>
-    </head>
-    <body>
-         <div class="wrap">
-			<div class="menu"></div>
-		 </div>
-    </body>
-</html>
+{% block content %}
+    pc index.html
+{% endblock %}

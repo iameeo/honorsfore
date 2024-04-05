@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>HONORSFORE - WIRYE</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap">
+		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/m/style.css')}}"/>
+		
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script src="{{url_for('static', filename='js/m/script.js')}}"></script>
+    </head>
+    <body>
+        <div class="wrap">
+			<div class="menu_wrap">
+				<ul class="menu on">
+					<li class=" noSub">
+						<a href="../sub/summary.asp">사업안내</a>
+						<ul class="depth2 depth2-list">
+							<li class=""><a href="../sub/summary.asp">사업개요</a></li>
+							<li class=""><a href="../sub/brand.asp">브랜드소개</a></li>
+							<li class=""><a href="../sub/direction.asp">오시는길</a></li>
+						</ul>
+					</li>
+					<li class=" noSub">
+						<a href="../sub/location.asp">입지ㆍ단지안내</a>
+						<ul class="depth2 depth2-list">
+							<li class=""><a href="../sub/location.asp">입지환경</a></li>
+							<li class=""><a href="../sub/plan.asp">단지설계</a></li>
+							<li class=""><a href="../sub/chart1.asp">단지배치도</a></li>
+							<li class=""><a href="../sub/chart2.asp">동호배치도</a></li>
+							<li class=""><a href="../sub/community.asp">커뮤니티</a></li>
+						</ul>
+					</li>
+					<li class=" noSub">
+						<a href="../sub/unit.asp">세대안내</a>
+						<ul class="depth2 depth2-list">
+							<li class=""><a href="../sub/unit.asp">평면안내</a></li>
+							<li class=""><a href="../sub/emodelhouse.asp">E-모델하우스</a></li>
+						</ul>
+					</li>
+					<li class=" noSub">
+						<a href="../sub/schdule.asp">분양안내</a>
+						<ul class="depth2 depth2-list">
+							<li class=""><a href="../sub/schdule.asp">분양일정</a></li>
+							<li class=""><a href="../sub/post.asp">입주자모집공고</a></li>
+						</ul>
+					</li>
+					<li class=" noSub">
+						<a href="../sub/customer.asp">고객센터</a>
+						<ul class="depth2 depth2-list">
+							<li class=""><a href="../sub/customer.asp">관심고객등록</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="contents">
+				{% block content %}
+				
+				{% endblock %}
+			</div>
+			<div class="footer">
+				<div class="topWrap">
+					<img src="../assets/images/common/img_footer1.png" alt="">
+					<img src="../assets/images/common/img_footer2.png" alt="">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
