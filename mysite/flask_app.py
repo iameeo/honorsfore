@@ -11,7 +11,7 @@ Mobility(app)
 @app.route('/')
 @mobile_template("{m/}index.html")
 def Index(template):
-    path = 'Index'
+    path = 'index'
     return render_template(template, path=path)
     
 def slackMessage(text):
