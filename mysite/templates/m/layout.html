@@ -1,67 +1,32 @@
 <!DOCTYPE html>
-<html>
-    <head>
-		<title>HONORSFORE - WIRYE</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>HONORSFORE - WIRYE</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/m/style.css')}}"/>
+</head>
+<body>
+    <div class="header">
+        <img src="https://picsum.photos/150/50" alt="Logo">
+    </div>
+    
+    {% block content %}
 
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap">
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/m/style.css')}}"/>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-		
-		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-		<script src="{{url_for('static', filename='js/m/script.js')}}"></script>
-		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    </head>
-    <body>
-		<!-- Swiper -->
-		<div class="swiper">
-			<div class="swiper-wrapper">
-			<div class="swiper-slide menu">Menu slide</div>
-			<div class="swiper-slide content">
-				<div class="menu-button">
-					<div class="bar"></div>
-					<div class="bar"></div>
-					<div class="bar"></div>
-				</div>
-				{% block content %}
-				
-				{% endblock %}
-			</div>
-			</div>
-		</div>
+    {% endblock %}
 
-		<!-- Initialize Swiper -->
-		<script>
-			var menuButton = document.querySelector('.menu-button');
-			var openMenu = function () {
-			swiper.slidePrev();
-			};
-			var swiper = new Swiper('.swiper', {
-			slidesPerView: 'auto',
-			initialSlide: 1,
-			resistanceRatio: 0,
-			slideToClickedSlide: true,
-			on: {
-				slideChangeTransitionStart: function () {
-				var slider = this;
-				if (slider.activeIndex === 0) {
-					menuButton.classList.add('cross');
-					// required because of slideToClickedSlide
-					menuButton.removeEventListener('click', openMenu, true);
-				} else {
-					menuButton.classList.remove('cross');
-				}
-				},
-				slideChangeTransitionEnd: function () {
-				var slider = this;
-				if (slider.activeIndex === 1) {
-					menuButton.addEventListener('click', openMenu, true);
-				}
-				},
-			},
-			});
-		</script>
+    <div class="footer">
+        <p>Footer Content</p>
+    </div>
 
-	</body>
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modal-img" src="" alt="Expanded Image">
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{{url_for('static', filename='js/m/script.js')}}"></script>
+</body>
 </html>
