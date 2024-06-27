@@ -1,8 +1,7 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template
 from flask_mobility import Mobility
 from flask_mobility.decorators import mobile_template
 import requests
-import os
 
 app = Flask(__name__)
 Mobility(app)
