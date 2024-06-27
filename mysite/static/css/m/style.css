@@ -1,3 +1,4 @@
+/* Body Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -10,12 +11,16 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
+
+/* Header and Footer Styles */
 .header, .footer {
   width: 100%;
   background-color: #333;
   text-align: center;
   color: white;
 }
+
+/* Gallery Styles */
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -24,18 +29,21 @@ body {
   max-width: 600px;
   margin: 20px 0;
 }
+
 .gallery-item {
   flex: 0 0 48%;
   margin-bottom: 10px;
-  width:150px;
+  width: 150px;
   height: 150px;
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  background: url('') center center / 150% no-repeat #333; display: block;
+  background: url('') center center / 150% no-repeat #333;
+  display: block;
 }
 
+/* Modal Styles */
 .modal {
   display: none;
   position: fixed;
@@ -49,15 +57,18 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .modal-content {
   position: relative;
   max-width: 90%;
   max-height: 90%;
 }
+
 .modal-content img {
   width: 100%;
   height: auto;
 }
+
 .close {
   position: absolute;
   top: 10px;

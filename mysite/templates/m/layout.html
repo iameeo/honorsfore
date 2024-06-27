@@ -4,29 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>HONORSFORE - WIRYE</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/m/style.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/m/style.css') }}"/>
 </head>
 <body>
+    <!-- Header Section -->
     <div class="header">
         <img src="https://picsum.photos/150/50" alt="Logo">
     </div>
     
+    <!-- Content Section -->
     {% block content %}
-
     {% endblock %}
-
+    
+    <!-- Footer Section -->
     <div class="footer">
         <p>Footer Content</p>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Section -->
     <div id="myModal" class="modal">
         <span class="close">&times;</span>
         <div class="modal-content">
             <img id="modal-img" src="" alt="Expanded Image">
         </div>
     </div>
+    
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="{{url_for('static', filename='js/m/script.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/m/script.js') }}"></script>
 </body>
 </html>
