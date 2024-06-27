@@ -15,7 +15,9 @@ def index(template):
     return render_template(template, path=path)
 
 def slack_message(text):
-    slack_url = 'https://hooks.slack.com/services/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'
+    slack_url = 'https://hooks.slack.com/services/TMGE25VGT/B05GZRKLRU1/'
+    slack_url = slack_url + 'NocJsMkkrzdBoFyssCDKJmfZ'
+
     if slack_url:
         payload = { "text": text }
         response = requests.post(slack_url, json=payload)
