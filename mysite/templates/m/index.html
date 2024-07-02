@@ -3,3 +3,53 @@
 {% block content %}
     <div class="gallery"></div>
 {% endblock %}
+
+{% block script %}
+    <script>
+        $(function(){
+            gallery_get();
+        });
+        
+        function gallery_get(){
+            $.ajax({
+                url: '/gallery/get',
+                method: 'get',
+                dataType : 'json',
+                success: function (data) {
+                    for(let i=0; i<data.data.length; i++){
+                        const imgSrc = "/static/upload/" + data.data[i];
+                        const galleryItem = `
+                            <div class="gallery-item" data-imgurl="${imgSrc}" style="background: url('${imgSrc}') center center / 150% no-repeat #fff;"></div>
+                        `;
+                        $(".gallery").append(galleryItem);
+                    }
+
+                    gallery_modal_bind();
+                },
+                error: function (data, status, err) {
+                    alert("에러가 발생했습니다.")
+                }
+            });
+        }
+
+        function gallery_modal_bind(){
+            // Modal elements
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("modal-img");
+            const closeBtn = document.querySelector(".close");
+
+            // Open modal when a gallery item is clicked
+            document.querySelectorAll(".gallery-item").forEach(img => {
+                img.addEventListener("click", () => {
+                    modal.style.display = "flex";
+                    modalImg.src = img.getAttribute("data-imgurl");
+                });
+            });
+
+            // Close modal when the close button is clicked
+            closeBtn.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+        }
+    </script>
+{% endblock %}

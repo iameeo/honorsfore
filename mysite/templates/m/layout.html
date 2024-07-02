@@ -32,5 +32,9 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="{{ url_for('static', filename='js/m/script.js') }}"></script>
+    
+    <!-- Script Section -->
+    {% block script %}
+    {% endblock %}
 </body>
 </html>
