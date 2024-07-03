@@ -7,7 +7,7 @@ from http import HTTPStatus
 app = Flask(__name__)
 Mobility(app)
 
-UPLOAD_FOLDER = os.getcwd() + '/mysite/static/upload'  # 절대 파일 경로
+UPLOAD_FOLDER = os.getcwd() + '/upload'  # 절대 파일 경로
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 @app.route('/')
