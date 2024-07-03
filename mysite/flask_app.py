@@ -25,7 +25,6 @@ def gallery_regist(template):
 
 @app.route('/gallery/regist', methods=['POST'])
 def gallery_regist_post():
-    print(request.files)
     file = request.files['file']
     if file and allowed_file(file.filename):
         filename = now_time() + "_" + file.filename
@@ -37,7 +36,12 @@ def gallery_regist_post():
 def gallery_get():
     abs_path = os.path.join(UPLOAD_FOLDER)
     files = os.listdir(abs_path)
+    files = sorted(files, key=get_creation_time, reverse=True)
     return jsonify({"data": files, "status": HTTPStatus.OK})
+
+def get_creation_time(item):
+        item_path = os.path.join(UPLOAD_FOLDER, item)
+        return os.path.getctime(item_path)
 
 def now_time():
     now = datetime.datetime.now()
