@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>HONORSFORE - WIRYE</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/m/style.css') }}"/>
-</head>
-<body>
-    <!-- Header Section -->
-    <div class="header">
-        <img src="https://picsum.photos/150/50" alt="Logo">
-    </div>
-    
-    <!-- Content Section -->
-    {% block content %}
-    {% endblock %}
-    
-    <!-- Footer Section -->
-    <div class="footer">
-        <p>Footer Content</p>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>HONORSFORE - WIRYE</title>
 
-    <!-- Modal Section -->
-    <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <div class="modal-content">
-            <img id="modal-img" src="" alt="Expanded Image">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/m/style.css') }}"/>
+    </head>
+    <body>
+        <!-- Header Section -->
+        <div class="header">
+            <span><a href="{{url_for('index')}}">HONORS FORE</a></span>
         </div>
-    </div>
-    
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="{{ url_for('static', filename='js/m/script.js') }}"></script>
-    
-    <!-- Script Section -->
-    {% block script %}
-    {% endblock %}
-</body>
+        
+        <!-- Content Section -->
+        {% block content %}
+        {% endblock %}
+        
+        <!-- Footer Section -->
+        <div class="footer">
+            <p style="font-size:10px;">COPYRIGHTⓒ HONORSFORE. ALL RIGHTS RESERVED.</p>
+        </div>
+
+        <!-- Modal Section -->
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-content">
+                <img id="modal-img" src="" alt="Expanded Image">
+            </div>
+        </div>
+        
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="{{ url_for('static', filename='js/m/script.js') }}"></script>
+        
+        <!-- Script Section -->
+        {% block script %}
+        {% endblock %}
+    </body>
 </html>

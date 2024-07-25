@@ -1,63 +1,22 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<title>HONORSFORE - WIRYE</title>
 
+		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap">
-		<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}"/>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-		
-		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-		<script src="{{url_for('static', filename='js/script.js')}}"></script>
-		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-		<script src="https://manos.malihu.gr/repository/custom-scrollbar/demo/jquery.mCustomScrollbar.concat.min.js"></script>
-
-    </head>
+		<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
+	</head>
     <body>
         <div class="wrap">
-			<div class="menu_wrap">
-				<ul class="menu on">
-					<li class="noSub">
-						<a href="../sub/summary.asp">사업안내</a>
-						<ul class="depth2 depth2-list">
-							<li class=""><a href="../sub/summary.asp">사업개요</a></li>
-							<li class=""><a href="../sub/brand.asp">브랜드소개</a></li>
-							<li class=""><a href="../sub/direction.asp">오시는길</a></li>
-						</ul>
-					</li>
-					<li class="noSub">
-						<a href="../sub/location.asp">입지ㆍ단지안내</a>
-						<ul class="depth2 depth2-list">
-							<li class=""><a href="../sub/location.asp">입지환경</a></li>
-							<li class=""><a href="../sub/plan.asp">단지설계</a></li>
-							<li class=""><a href="../sub/chart1.asp">단지배치도</a></li>
-							<li class=""><a href="../sub/chart2.asp">동호배치도</a></li>
-							<li class=""><a href="../sub/community.asp">커뮤니티</a></li>
-						</ul>
-					</li>
-					<li class="noSub">
-						<a href="../sub/unit.asp">세대안내</a>
-						<ul class="depth2 depth2-list">
-							<li class=""><a href="../sub/unit.asp">평면안내</a></li>
-							<li class=""><a href="../sub/emodelhouse.asp">E-모델하우스</a></li>
-						</ul>
-					</li>
-					<li class="noSub">
-						<a href="../sub/schdule.asp">분양안내</a>
-						<ul class="depth2 depth2-list">
-							<li class=""><a href="../sub/schdule.asp">분양일정</a></li>
-							<li class=""><a href="../sub/post.asp">입주자모집공고</a></li>
-						</ul>
-					</li>
-					<li class="noSub">
-						<a href="../sub/customer.asp">고객센터</a>
-						<ul class="depth2 depth2-list">
-							<li class=""><a href="../sub/customer.asp">관심고객등록</a></li>
-						</ul>
-					</li>
-				</ul>
+			<!-- Header Section -->
+			<div class="header">
+				<span><a href="{{url_for('index')}}">HONORS FORE</a></span>
 			</div>
+
 			<div class="contents">
 				{% block content %}
 				
@@ -65,12 +24,9 @@
 			</div>
 			<div class="footer">
 				<div>
-					총 411세대 공공분양 아파트 및 근린생활시설 | 전용면적 59m
+					COPYRIGHTⓒ HONORSFORE. ALL RIGHTS RESERVED.
 				</div>
 			</div>
 		</div>
 	</body>
-	<script>
-		$("body").mCustomScrollbar({theme:"minimal-dark"});
-	</script>
 </html>
