@@ -3,13 +3,46 @@ from flask_mobility import Mobility
 from flask_mobility.decorators import mobile_template
 import requests, os, datetime
 from http import HTTPStatus
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 Mobility(app)
 
-UPLOAD_FOLDER = os.getcwd() + '/upload'  # 절대 파일 경로
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+# Constants
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'upload')
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/TMGE25VGT/B05GZRKLRU1/'
+SLACK_WEBHOOK_URL = SLACK_WEBHOOK_URL + 'NocJsMkkrzdBoFyssCDKJmfZ'
 
+# Ensure the upload folder exists
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+# Utility functions
+def allowed_file(filename):
+    """Check if the file has an allowed extension."""
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def now_time():
+    """Return the current timestamp in the format YYYYMMDDHHMMSS."""
+    return datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+
+def get_creation_time(item):
+    """Get the creation time of the file."""
+    item_path = os.path.join(UPLOAD_FOLDER, item)
+    return os.path.getctime(item_path)
+
+def slack_message(text):
+    """Send a message to Slack using a webhook."""
+    if SLACK_WEBHOOK_URL:
+        payload = {"text": text}
+        response = requests.post(SLACK_WEBHOOK_URL, json=payload)
+        if response.status_code != 200:
+            raise ValueError(f"Slack request failed with error {response.status_code}: {response.text}")
+    else:
+        raise ValueError("Slack Webhook URL is not set")
+
+# Routes
 @app.route('/')
 @mobile_template("{m/}index.html")
 def index(template):
@@ -25,74 +58,21 @@ def gallery_regist(template):
 
 @app.route('/gallery/regist', methods=['POST'])
 def gallery_regist_post():
-    file = request.files['file']
+    file = request.files.get('file')
     if file and allowed_file(file.filename):
-        filename = now_time() + "_" + file.filename
-        filepathtosave = os.path.join(UPLOAD_FOLDER, filename)
-        file.save(filepathtosave)
+        filename = secure_filename(now_time() + "_" + file.filename)
+        file_path = os.path.join(UPLOAD_FOLDER, filename)
+        file.save(file_path)
+        slack_message(f"File uploaded: {filename}")
+    else:
+        return jsonify({"error": "Invalid file format"}), HTTPStatus.BAD_REQUEST
+    
     return redirect('/')
 
 @app.route('/gallery/get', methods=['GET'])
 def gallery_get():
-    abs_path = os.path.join(UPLOAD_FOLDER)
-    files = os.listdir(abs_path)
-    files = sorted(files, key=get_creation_time, reverse=True)
+    files = sorted(os.listdir(UPLOAD_FOLDER), key=get_creation_time, reverse=True)
     return jsonify({"data": files, "status": HTTPStatus.OK})
-
-def get_creation_time(item):
-        item_path = os.path.join(UPLOAD_FOLDER, item)
-        return os.path.getctime(item_path)
-
-def now_time():
-    now = datetime.datetime.now()
-    year = str(now.year)
-    month = "0"+str(now.month)
-    day = str(now.day)
-    hour = str(now.hour)
-    minute = str(now.minute)
-    second = str(now.second)
-
-    # ============================ 현재시간====================================
-    # 10초 미만일 경우
-    second = int(second)
-    if second < 10: # 10초 미만이라면
-        second = "0" + str(second)
-
-    second = str(second)
-
-     # 10분 미만일 경우
-    minute = int(minute)
-    if minute < 10: # 10분 미만이라면
-        minute = "0" + str(minute)
-
-    minute = str(minute)
-
-    # 10시 미만일 경우
-    hour = int(hour)
-    if hour < 10: # 10시 미만이라면
-        hour = "0" + str(hour)
-
-    hour = str(hour)
-
-    current_time = year+month+day+hour+minute+second   # 20210810215021
-
-    return current_time
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
-
-def slack_message(text):
-    slack_url = 'https://hooks.slack.com/services/TMGE25VGT/B05GZRKLRU1/'
-    slack_url = slack_url + 'NocJsMkkrzdBoFyssCDKJmfZ'
-
-    if slack_url:
-        payload = { "text": text }
-        response = requests.post(slack_url, json=payload)
-        if response.status_code != 200:
-            raise ValueError(f'Request to slack returned an error {response.status_code}, the response is:\n{response.text}')
-    else:
-        raise ValueError("Slack Webhook URL not set")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)

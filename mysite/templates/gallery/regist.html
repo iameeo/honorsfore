@@ -1,0 +1,16 @@
+{% extends '/layout.html' %}
+
+{% block content %}
+    <form name="form" id="form" method="post" action="/gallery/regist" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <input type="button" value="등록" onclick="regist()" />
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script>
+        function regist(){
+            $("#form").submit();
+        }
+    </script>
+{% endblock %}
